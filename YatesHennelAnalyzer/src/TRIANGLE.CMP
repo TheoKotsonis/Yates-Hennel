@@ -1,0 +1,515 @@
+ STRUCTURED PROGRAMMING VERIFICATION WILL USE THE FOLLOWING  7 STRUCTURES
+ ------------------------------------------------------------------------
+
+ SIMPLE COLLAPSE                         
+
+ REPEAT                                  
+
+ CASE                                    
+
+ WHILE LOOP                              
+
+ IF THEN                                 
+
+ IF THEN ELSE                            
+
+ FOR LOOP                                
+
+
+
+
+
+                                  *****************************************************
+                                  *****************************************************
+                                  **                                                 **
+                                  **                                                 **
+                                  **             COMPLEXITY ANALYSIS FOR             **
+                                  **                                                 **
+                                  **                                                 **
+                                  **                 PROCEDURE *MAIN                 **
+                                  **                                                 **
+                                  **                                                 **
+                                  *****************************************************
+                                  *****************************************************
+
+
+
+
+
+ LIST OF KNOTS
+ -------------
+
+ =======================================================
+  FROM   TO    FROM   TO     DOWN-DOWN  UP-DOWN    UP-UP
+ =======================================================
+
+    16   70      69   14                   T
+    22   27      26   67         T
+    49   54      53   66         T
+    57   62      61   65         T
+
+ -------------------------------------------------------
+
+ TOTAL NUMBER OF KNOTS     =    4
+
+ NUMBER OF DOWN-DOWN KNOTS =    3
+ NUMBER OF UP-DOWN KNOTS   =    1
+ NUMBER OF UP-UP KNOTS     =    0
+
+ BASIC BLOCK DISPLAY
+ -------------------
+
+ =======================================================================================================================
+  LINE                                                                                                       BASIC BLOCK
+ NUMBER                                                 STATEMENT                                                 NUMBER
+ =======================================================================================================================
+
+     9  begin                                                                                                          1
+    10    writeln ( ' This program reads 3 integers and determines' ) ;                                                1
+    11    writeln ( ' what type of triangle they make, if any' ) ;                                                     1
+    12    writeln ;                                                                                                    1
+    13    writeln ( ' Input three integers - or <controlz> to terminate' ) ;                                           1
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    14    while                                                                                                        2
+    15       not eof ( input )                                                                                         2
+    16    do                                                                                                           2
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    17     begin                                                                                                       3
+    18       readln ( i , j , k ) ;                                                                                    3
+    19       write ( i , j , k ) ;                                                                                     3
+    20       if                                                                                                        3
+    21          ( i >= j + k ) or ( j >= k + i ) or ( k >= i + j )                                                     3
+    22       then                                                                                                      3
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    23        BEGIN                                                                                                    4
+    24          writeln ( '  do not make a triangle' )                                                                 4
+    25        END                                                                                                      4
+    26       else                                                                                                      4
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    27        begin                                                                                                    5
+    28          match := 0 ;                                                                                           5
+    29          if                                                                                                     5
+    30             i = j                                                                                               5
+    31          then                                                                                                   5
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    32           BEGIN                                                                                                 6
+    33             match := match + 1                                                                                  6
+    34           END ;                                                                                                 6
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    35          if                                                                                                     7
+    36             j = k                                                                                               7
+    37          then                                                                                                   7
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    38           BEGIN                                                                                                 8
+    39             match := match + 1                                                                                  8
+    40           END ;                                                                                                 8
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    41          if                                                                                                     9
+    42             k = i                                                                                               9
+    43          then                                                                                                   9
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    44           BEGIN                                                                                                10
+    45             match := match + 1                                                                                 10
+    46           END ;                                                                                                10
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    47          if                                                                                                    11
+    48             match = 0                                                                                          11
+    49          then                                                                                                  11
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    50           BEGIN                                                                                                12
+    51             writeln ( '  - scalene triangle' )                                                                 12
+    52           END                                                                                                  12
+    53          else                                                                                                  12
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    54           begin                                                                                                13
+    55             if                                                                                                 13
+    56                match = 1                                                                                       13
+    57             then                                                                                               13
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    58              BEGIN                                                                                             14
+    59                writeln ( '  - isosceles triangle' )                                                            14
+    60              END                                                                                               14
+    61             else                                                                                               14
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    62              BEGIN                                                                                             15
+    63                writeln ( '  - equilateral triangle' )                                                          15
+    64              END                                                                                               15
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    65           end                                                                                                  16
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    66        end ;                                                                                                   17
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    67       writeln ;                                                                                                18
+    68       writeln ( ' Input three integers - or <controlZ> to terminate' )                                         18
+    69     end                                                                                                        18
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    70  end .                                                                                                         19
+
+
+
+
+
+ AVERAGE LENGTH OF BASIC BLOCK =  3.26 EXECUTABLE LINES
+
+
+ PROCEDURE ENTRY AT BASIC BLOCK    1
+
+ PROCEDURE EXIT  AT BASIC BLOCK   19
+
+
+
+
+
+ KNOTS
+ -----
+
+ ===============================================================================
+  FROM       TO        FROM       TO          FROM       TO        FROM       TO
+ BLOCK    BLOCK       BLOCK    BLOCK          LINE     LINE        LINE     LINE
+ ===============================================================================
+
+     2       19          18        2            16       70          69       14
+     3        5           4       18            22       27          26       67
+    11       13          12       17            49       54          53       66
+    13       15          14       16            57       62          61       65
+
+
+
+
+
+ NUMBER OF BLOCK CONNECTIONS  =   25
+ NUMBER OF BLOCKS             =   19
+
+ COMPLEXITY MEASURE OF MCCABE =    8
+ ***********************************
+
+ NUMBER OF KNOTS              =    4
+ ***********************************
+
+ INTERVAL ANALYSIS
+ -----------------
+
+
+
+
+
+ INTERVALS OF ORDER    1
+ -----------------------
+
+
+
+ HEADER BLOCK       1
+ INTERVAL BLOCKS    1
+ EXIT BLOCK         1
+
+
+ HEADER BLOCK       2 ( HEAD OF LOOP )
+ INTERVAL BLOCKS    2    3   19    4    5    6    7    8    9   10   11   12
+                   13   14   15   16   17   18
+ EXIT BLOCK        19
+
+
+ NUMBER OF INTERVALS =    2
+ AVERAGE LENGTH OF INTERVAL =  9.50 BLOCKS
+
+
+
+
+
+ INTERVALS OF ORDER    2
+ -----------------------
+
+
+
+ HEADER BLOCK       1
+ INTERVAL BLOCKS    1    2
+ EXIT BLOCK         2
+
+
+ NUMBER OF INTERVALS =    1
+ AVERAGE LENGTH OF INTERVAL =  2.00 BLOCKS
+
+
+ PROCEDURE REDUCIBLE IN THE INTERVAL SENSE
+ *****************************************
+
+ STRUCTURED PROGRAMMING VERIFICATION
+ -----------------------------------
+
+
+
+
+
+ ----- CONNECTION DISPLAY -----
+
+ BLOCK    1 CONNECTS TO BLOCKS    2
+ BLOCK    2 CONNECTS TO BLOCKS    3   19
+ BLOCK    3 CONNECTS TO BLOCKS    4    5
+ BLOCK    4 CONNECTS TO BLOCKS   18
+ BLOCK    5 CONNECTS TO BLOCKS    6    7
+ BLOCK    6 CONNECTS TO BLOCKS    7
+ BLOCK    7 CONNECTS TO BLOCKS    8    9
+ BLOCK    8 CONNECTS TO BLOCKS    9
+ BLOCK    9 CONNECTS TO BLOCKS   10   11
+ BLOCK   10 CONNECTS TO BLOCKS   11
+ BLOCK   11 CONNECTS TO BLOCKS   12   13
+ BLOCK   12 CONNECTS TO BLOCKS   17
+ BLOCK   13 CONNECTS TO BLOCKS   14   15
+ BLOCK   14 CONNECTS TO BLOCKS   16
+ BLOCK   15 CONNECTS TO BLOCKS   16
+ BLOCK   16 CONNECTS TO BLOCKS   17
+ BLOCK   17 CONNECTS TO BLOCKS   18
+ BLOCK   18 CONNECTS TO BLOCKS    2
+
+
+
+ THE LINES OF CODE CONTAINED IN EACH BLOCK ARE
+
+ BLOCK    1 CONTAINS LINES    9 TO   13    -   BLOCK    1
+ BLOCK    2 CONTAINS LINES   14 TO   16    -   BLOCK    2
+ BLOCK    3 CONTAINS LINES   17 TO   22    -   BLOCK    3
+ BLOCK    4 CONTAINS LINES   23 TO   26    -   BLOCK    4
+ BLOCK    5 CONTAINS LINES   27 TO   31    -   BLOCK    5
+ BLOCK    6 CONTAINS LINES   32 TO   34    -   BLOCK    6
+ BLOCK    7 CONTAINS LINES   35 TO   37    -   BLOCK    7
+ BLOCK    8 CONTAINS LINES   38 TO   40    -   BLOCK    8
+ BLOCK    9 CONTAINS LINES   41 TO   43    -   BLOCK    9
+ BLOCK   10 CONTAINS LINES   44 TO   46    -   BLOCK   10
+ BLOCK   11 CONTAINS LINES   47 TO   49    -   BLOCK   11
+ BLOCK   12 CONTAINS LINES   50 TO   53    -   BLOCK   12
+ BLOCK   13 CONTAINS LINES   54 TO   57    -   BLOCK   13
+ BLOCK   14 CONTAINS LINES   58 TO   61    -   BLOCK   14
+ BLOCK   15 CONTAINS LINES   62 TO   64    -   BLOCK   15
+ BLOCK   16 CONTAINS LINES   65 TO   65    -   BLOCK   16
+ BLOCK   17 CONTAINS LINES   66 TO   66    -   BLOCK   17
+ BLOCK   18 CONTAINS LINES   67 TO   69    -   BLOCK   18
+ BLOCK   19 CONTAINS LINES   70 TO   70    -   BLOCK   19
+
+
+
+
+
+ ----- STRUCTURED CODE FOUND -----
+
+ IF THEN ELSE                            
+                      FORMED OF BLOCKS   13   14   15   16
+       THE FOLLOWING BLOCKS ARE MERGED   13   14   15
+
+ IF THEN                                 
+                      FORMED OF BLOCKS    9   10   11
+       THE FOLLOWING BLOCKS ARE MERGED    9   10
+
+ IF THEN                                 
+                      FORMED OF BLOCKS    7    8    9
+       THE FOLLOWING BLOCKS ARE MERGED    7    8
+
+ IF THEN                                 
+                      FORMED OF BLOCKS    5    6    7
+       THE FOLLOWING BLOCKS ARE MERGED    5    6
+
+
+
+
+
+ ----- CONNECTION DISPLAY -----
+
+ BLOCK    1 CONNECTS TO BLOCKS    2
+ BLOCK    2 CONNECTS TO BLOCKS    3   19
+ BLOCK    3 CONNECTS TO BLOCKS    4    5
+ BLOCK    4 CONNECTS TO BLOCKS   18
+ BLOCK    5 CONNECTS TO BLOCKS    7
+ BLOCK    7 CONNECTS TO BLOCKS    9
+ BLOCK    9 CONNECTS TO BLOCKS   11
+ BLOCK   11 CONNECTS TO BLOCKS   12   13
+ BLOCK   12 CONNECTS TO BLOCKS   17
+ BLOCK   13 CONNECTS TO BLOCKS   16
+ BLOCK   16 CONNECTS TO BLOCKS   17
+ BLOCK   17 CONNECTS TO BLOCKS   18
+ BLOCK   18 CONNECTS TO BLOCKS    2
+
+
+
+ THE LINES OF CODE CONTAINED IN EACH BLOCK ARE
+
+ BLOCK    1 CONTAINS LINES    9 TO   13    -   BLOCK    1
+ BLOCK    2 CONTAINS LINES   14 TO   16    -   BLOCK    2
+ BLOCK    3 CONTAINS LINES   17 TO   22    -   BLOCK    3
+ BLOCK    4 CONTAINS LINES   23 TO   26    -   BLOCK    4
+ BLOCK    5 CONTAINS LINES   27 TO   34    -  BLOCKS    5 TO    6
+ BLOCK    7 CONTAINS LINES   35 TO   40    -  BLOCKS    7 TO    8
+ BLOCK    9 CONTAINS LINES   41 TO   46    -  BLOCKS    9 TO   10
+ BLOCK   11 CONTAINS LINES   47 TO   49    -   BLOCK   11
+ BLOCK   12 CONTAINS LINES   50 TO   53    -   BLOCK   12
+ BLOCK   13 CONTAINS LINES   54 TO   64    -  BLOCKS   13 TO   15
+ BLOCK   16 CONTAINS LINES   65 TO   65    -   BLOCK   16
+ BLOCK   17 CONTAINS LINES   66 TO   66    -   BLOCK   17
+ BLOCK   18 CONTAINS LINES   67 TO   69    -   BLOCK   18
+ BLOCK   19 CONTAINS LINES   70 TO   70    -   BLOCK   19
+
+
+
+
+
+ ----- STRUCTURED CODE FOUND -----
+
+ SIMPLE COLLAPSE                         
+                      FORMED OF BLOCKS   13   16
+       THE FOLLOWING BLOCKS ARE MERGED   13   16
+
+ IF THEN ELSE                            
+                      FORMED OF BLOCKS   11   12   13   17
+       THE FOLLOWING BLOCKS ARE MERGED   11   12   13
+
+ SIMPLE COLLAPSE                         
+                      FORMED OF BLOCKS    9   11
+       THE FOLLOWING BLOCKS ARE MERGED    9   11
+
+ SIMPLE COLLAPSE                         
+                      FORMED OF BLOCKS    9   17
+       THE FOLLOWING BLOCKS ARE MERGED    9   17
+
+ SIMPLE COLLAPSE                         
+                      FORMED OF BLOCKS    7    9
+       THE FOLLOWING BLOCKS ARE MERGED    7    9
+
+ SIMPLE COLLAPSE                         
+                      FORMED OF BLOCKS    5    7
+       THE FOLLOWING BLOCKS ARE MERGED    5    7
+
+ IF THEN ELSE                            
+                      FORMED OF BLOCKS    3    4    5   18
+       THE FOLLOWING BLOCKS ARE MERGED    3    4    5
+
+
+
+
+
+ ----- CONNECTION DISPLAY -----
+
+ BLOCK    1 CONNECTS TO BLOCKS    2
+ BLOCK    2 CONNECTS TO BLOCKS    3   19
+ BLOCK    3 CONNECTS TO BLOCKS   18
+ BLOCK   18 CONNECTS TO BLOCKS    2
+
+
+
+ THE LINES OF CODE CONTAINED IN EACH BLOCK ARE
+
+ BLOCK    1 CONTAINS LINES    9 TO   13    -   BLOCK    1
+ BLOCK    2 CONTAINS LINES   14 TO   16    -   BLOCK    2
+ BLOCK    3 CONTAINS LINES   17 TO   66    -  BLOCKS    3 TO   17
+ BLOCK   18 CONTAINS LINES   67 TO   69    -   BLOCK   18
+ BLOCK   19 CONTAINS LINES   70 TO   70    -   BLOCK   19
+
+
+
+
+
+ ----- STRUCTURED CODE FOUND -----
+
+ SIMPLE COLLAPSE                         
+                      FORMED OF BLOCKS    3   18
+       THE FOLLOWING BLOCKS ARE MERGED    3   18
+
+ WHILE LOOP                              
+                      FORMED OF BLOCKS    2    3   19
+       THE FOLLOWING BLOCKS ARE MERGED    2    3
+
+ SIMPLE COLLAPSE                         
+                      FORMED OF BLOCKS    1    2
+       THE FOLLOWING BLOCKS ARE MERGED    1    2
+
+ SIMPLE COLLAPSE                         
+                      FORMED OF BLOCKS    1   19
+       THE FOLLOWING BLOCKS ARE MERGED    1   19
+
+
+
+
+
+ STRUCTURE REDUCED TO 1 BLOCK
+
+
+
+
+
+ ESSENTIAL KNOTS =    0
+ **********************
+
+ ESSENTIAL COMPLEXITY OF MCCABE =    1
+ *************************************
+
+
+ PROCEDURE STRUCTURED
+ ********************
+
+ =====================================================================================================================
+                  EXECUTABLE     BASIC   AVERAGE   ORDER 1 MAX ORDER                               ESSENTIAL ESSENTIAL
+ PROCEDURE             LINES    BLOCKS    LENGTH INTERVALS INTERVALS REDUCIBLE    MCCABE     KNOTS    MCCABE     KNOTS
+ =====================================================================================================================
+
+ *MAIN                   62        19      3.26         2         2       YES         8         4         1         0
+
+ ---------------------------------------------------------------------------------------------------------------------
+
+ TOTAL FOR PROGRAM       62        19      3.26         2         2       YES         8         4         1         0
+
+
+
+
+
+ =========================================================
+                                           TOTAL MAX DEPTH
+ PROCEDURE           ENTRIES     EXITS     LOOPS     LOOPS
+ =========================================================
+
+ *MAIN                    1         1         1         1
+
+ ---------------------------------------------------------
+
+ TOTAL FOR PROGRAM        1         1         1         1
+
+
+
+
+
+ THE PROGRAM CONTAINS    1 PROCEDURES
+
+
+ THE ESSENTIAL MCCABE MEASURE OF 1 INDICATES THAT THE PROGRAM IS WELL STRUCTURED

@@ -1,0 +1,787 @@
+ STRUCTURED PROGRAMMING VERIFICATION WILL USE THE FOLLOWING  7 STRUCTURES
+ ------------------------------------------------------------------------
+
+ SIMPLE COLLAPSE                         
+
+ REPEAT                                  
+
+ CASE                                    
+
+ WHILE LOOP                              
+
+ IF THEN                                 
+
+ IF THEN ELSE                            
+
+ FOR LOOP                                
+
+
+
+
+
+                                  *****************************************************
+                                  *****************************************************
+                                  **                                                 **
+                                  **                                                 **
+                                  **             COMPLEXITY ANALYSIS FOR             **
+                                  **                                                 **
+                                  **                                                 **
+                                  **                 PROCEDURE *MAIN                 **
+                                  **                                                 **
+                                  **                                                 **
+                                  *****************************************************
+                                  *****************************************************
+
+
+
+
+
+ LIST OF KNOTS
+ -------------
+
+ =======================================================
+  FROM   TO    FROM   TO     DOWN-DOWN  UP-DOWN    UP-UP
+ =======================================================
+
+    29  113     112   27                   T
+    33   49      48  109         T
+    37   42      41   47         T
+    52   68      67  108         T
+    56   61      60   66         T
+    71   87      86  107         T
+    75   80      79   85         T
+    94   99      98  104         T
+
+ -------------------------------------------------------
+
+ TOTAL NUMBER OF KNOTS     =    8
+
+ NUMBER OF DOWN-DOWN KNOTS =    7
+ NUMBER OF UP-DOWN KNOTS   =    1
+ NUMBER OF UP-UP KNOTS     =    0
+
+ BASIC BLOCK DISPLAY
+ -------------------
+
+ =======================================================================================================================
+  LINE                                                                                                       BASIC BLOCK
+ NUMBER                                                 STATEMENT                                                 NUMBER
+ =======================================================================================================================
+
+    16  begin                                                                                                          1
+    18    writeln ( 'Type an integer' ) ;                                                                              1
+    19    readln ( j ) ;                                                                                               1
+    20    writeln ( 'Type another integer' ) ;                                                                         1
+    21    readln ( maxset ) ;                                                                                          1
+    22    writeln ( 'Type the initial number' ) ;                                                                      1
+    23    readln ( delim ) ;                                                                                           1
+    24    writeln ( 'Type the final number. To end type -1.' ) ;                                                       1
+    25    readln ( src ) ;                                                                                             1
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    27    while                                                                                                        2
+    28       ( src <> delim ) and ( src <> ENDSTR )                                                                    2
+    29    do                                                                                                           2
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    30     begin                                                                                                       3
+    31       if                                                                                                        3
+    32          ( src = ESCAPE )                                                                                       3
+    33       then                                                                                                      3
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    34        BEGIN                                                                                                    4
+    35          if                                                                                                     4
+    36             ( j > maxset )                                                                                      4
+    37          then                                                                                                   4
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    38           BEGIN                                                                                                 5
+    39             junk := false                                                                                       5
+    40           END                                                                                                   5
+    41          else                                                                                                   5
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    42           begin                                                                                                 6
+    43             dest := src ;                                                                                       6
+    44             j := j + 1 ;                                                                                        6
+    45             junk := true                                                                                        6
+    46           end                                                                                                   6
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    47        END                                                                                                      7
+    48       else                                                                                                      7
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    49        BEGIN                                                                                                    8
+    50          if                                                                                                     8
+    51             ( src <> DASH )                                                                                     8
+    52          then                                                                                                   8
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    53           BEGIN                                                                                                 9
+    54             if                                                                                                  9
+    55                ( j > maxset )                                                                                   9
+    56             then                                                                                                9
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    57              BEGIN                                                                                             10
+    58                junk := false                                                                                   10
+    59              END                                                                                               10
+    60             else                                                                                               10
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    61              begin                                                                                             11
+    62                dest := src ;                                                                                   11
+    63                j := j + 1 ;                                                                                    11
+    64                junk := true                                                                                    11
+    65              end                                                                                               11
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    66           END                                                                                                  12
+    67          else                                                                                                  12
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    68           BEGIN                                                                                                13
+    69             if                                                                                                 13
+    70                ( j <= 1 ) or ( src = ENDSTR )                                                                  13
+    71             then                                                                                               13
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    72              BEGIN                                                                                             14
+    73                if                                                                                              14
+    74                   ( j > maxset )                                                                               14
+    75                then                                                                                            14
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    76                 BEGIN                                                                                          15
+    77                   junk := false                                                                                15
+    78                 END                                                                                            15
+    79                else                                                                                            15
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    80                 begin                                                                                          16
+    81                   dest := DASH ;                                                                               16
+    82                   j := j + 1 ;                                                                                 16
+    83                   junk := true                                                                                 16
+    84                 end                                                                                            16
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    85              END                                                                                               17
+    86             else                                                                                               17
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    87              begin                                                                                             18
+    88                for                                                                                             18
+    89                   k := src to src + 2                                                                          18
+    90                do                                                                                              18
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    91                 BEGIN                                                                                          19
+    92                   if                                                                                           19
+    93                      ( j > maxset )                                                                            19
+    94                   then                                                                                         19
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    95                    BEGIN                                                                                       20
+    96                      junk := false                                                                             20
+    97                    END                                                                                         20
+    98                   else                                                                                         20
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    99                    begin                                                                                       21
+   100                      dest := k ;                                                                               21
+   101                      j := j + 1 ;                                                                              21
+   102                      junk := true                                                                              21
+   103                    end                                                                                         21
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+   104                 END ;                                                                                          22
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+   105                i := i + 1                                                                                      23
+   106              end                                                                                               23
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+   107           END                                                                                                  24
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+   108        END ;                                                                                                   25
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+   109       i := i + 1 ;                                                                                             26
+   110       writeln ( 'Type the final number. To end type -1.' ) ;                                                   26
+   111       readln ( src )                                                                                           26
+   112     end                                                                                                        26
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+   113  end .                                                                                                         27
+
+
+
+
+
+ AVERAGE LENGTH OF BASIC BLOCK =  3.56 EXECUTABLE LINES
+
+
+ PROCEDURE ENTRY AT BASIC BLOCK    1
+
+ PROCEDURE EXIT  AT BASIC BLOCK   27
+
+
+
+
+
+ KNOTS
+ -----
+
+ ===============================================================================
+  FROM       TO        FROM       TO          FROM       TO        FROM       TO
+ BLOCK    BLOCK       BLOCK    BLOCK          LINE     LINE        LINE     LINE
+ ===============================================================================
+
+     2       27          26        2            29      113         112       27
+     3        8           7       26            33       49          48      109
+     4        6           5        7            37       42          41       47
+     8       13          12       25            52       68          67      108
+     9       11          10       12            56       61          60       66
+    13       18          17       24            71       87          86      107
+    14       16          15       17            75       80          79       85
+    19       21          20       22            94       99          98      104
+
+
+
+
+
+ NUMBER OF BLOCK CONNECTIONS  =   36
+ NUMBER OF BLOCKS             =   27
+
+ COMPLEXITY MEASURE OF MCCABE =   11
+ ***********************************
+
+ NUMBER OF KNOTS              =    8
+ ***********************************
+
+ INTERVAL ANALYSIS
+ -----------------
+
+
+
+
+
+ INTERVALS OF ORDER    1
+ -----------------------
+
+
+
+ HEADER BLOCK       1
+ INTERVAL BLOCKS    1
+ EXIT BLOCK         1
+
+
+ HEADER BLOCK       2 ( HEAD OF LOOP )
+ INTERVAL BLOCKS    2    3   27    4    8    5    6    9   13    7   10   11
+                   14   18   12   15   16   17
+ EXIT BLOCK(S)     27    7   18   12   17
+
+
+ HEADER BLOCK      19 ( HEAD OF LOOP )
+ INTERVAL BLOCKS   19   20   21   22
+ EXIT BLOCK        22
+
+
+ HEADER BLOCK      23
+ INTERVAL BLOCKS   23
+ EXIT BLOCK        23
+
+
+ HEADER BLOCK      24
+ INTERVAL BLOCKS   24
+ EXIT BLOCK        24
+
+
+ HEADER BLOCK      25
+ INTERVAL BLOCKS   25
+ EXIT BLOCK        25
+
+
+ HEADER BLOCK      26
+ INTERVAL BLOCKS   26
+ EXIT BLOCK        26
+
+
+ NUMBER OF INTERVALS =    7
+ AVERAGE LENGTH OF INTERVAL =  3.86 BLOCKS
+
+
+
+
+
+ INTERVALS OF ORDER    2
+ -----------------------
+
+
+
+ HEADER BLOCK       1
+ INTERVAL BLOCKS    1
+ EXIT BLOCK         1
+
+
+ HEADER BLOCK       2 ( HEAD OF LOOP )
+ INTERVAL BLOCKS    2   19   23   24   25   26
+ NO EXIT NODES
+
+
+ NUMBER OF INTERVALS =    2
+ AVERAGE LENGTH OF INTERVAL =  3.50 BLOCKS
+
+
+
+
+
+ INTERVALS OF ORDER    3
+ -----------------------
+
+
+
+ HEADER BLOCK       1
+ INTERVAL BLOCKS    1    2
+ EXIT BLOCK         2
+
+
+ NUMBER OF INTERVALS =    1
+ AVERAGE LENGTH OF INTERVAL =  2.00 BLOCKS
+
+
+ PROCEDURE REDUCIBLE IN THE INTERVAL SENSE
+ *****************************************
+
+ STRUCTURED PROGRAMMING VERIFICATION
+ -----------------------------------
+
+
+
+
+
+ ----- CONNECTION DISPLAY -----
+
+ BLOCK    1 CONNECTS TO BLOCKS    2
+ BLOCK    2 CONNECTS TO BLOCKS    3   27
+ BLOCK    3 CONNECTS TO BLOCKS    4    8
+ BLOCK    4 CONNECTS TO BLOCKS    5    6
+ BLOCK    5 CONNECTS TO BLOCKS    7
+ BLOCK    6 CONNECTS TO BLOCKS    7
+ BLOCK    7 CONNECTS TO BLOCKS   26
+ BLOCK    8 CONNECTS TO BLOCKS    9   13
+ BLOCK    9 CONNECTS TO BLOCKS   10   11
+ BLOCK   10 CONNECTS TO BLOCKS   12
+ BLOCK   11 CONNECTS TO BLOCKS   12
+ BLOCK   12 CONNECTS TO BLOCKS   25
+ BLOCK   13 CONNECTS TO BLOCKS   14   18
+ BLOCK   14 CONNECTS TO BLOCKS   15   16
+ BLOCK   15 CONNECTS TO BLOCKS   17
+ BLOCK   16 CONNECTS TO BLOCKS   17
+ BLOCK   17 CONNECTS TO BLOCKS   24
+ BLOCK   18 CONNECTS TO BLOCKS   19   23
+ BLOCK   19 CONNECTS TO BLOCKS   20   21
+ BLOCK   20 CONNECTS TO BLOCKS   22
+ BLOCK   21 CONNECTS TO BLOCKS   22
+ BLOCK   22 CONNECTS TO BLOCKS   19   23
+ BLOCK   23 CONNECTS TO BLOCKS   24
+ BLOCK   24 CONNECTS TO BLOCKS   25
+ BLOCK   25 CONNECTS TO BLOCKS   26
+ BLOCK   26 CONNECTS TO BLOCKS    2
+
+
+
+ THE LINES OF CODE CONTAINED IN EACH BLOCK ARE
+
+ BLOCK    1 CONTAINS LINES   16 TO   25    -   BLOCK    1
+ BLOCK    2 CONTAINS LINES   27 TO   29    -   BLOCK    2
+ BLOCK    3 CONTAINS LINES   30 TO   33    -   BLOCK    3
+ BLOCK    4 CONTAINS LINES   34 TO   37    -   BLOCK    4
+ BLOCK    5 CONTAINS LINES   38 TO   41    -   BLOCK    5
+ BLOCK    6 CONTAINS LINES   42 TO   46    -   BLOCK    6
+ BLOCK    7 CONTAINS LINES   47 TO   48    -   BLOCK    7
+ BLOCK    8 CONTAINS LINES   49 TO   52    -   BLOCK    8
+ BLOCK    9 CONTAINS LINES   53 TO   56    -   BLOCK    9
+ BLOCK   10 CONTAINS LINES   57 TO   60    -   BLOCK   10
+ BLOCK   11 CONTAINS LINES   61 TO   65    -   BLOCK   11
+ BLOCK   12 CONTAINS LINES   66 TO   67    -   BLOCK   12
+ BLOCK   13 CONTAINS LINES   68 TO   71    -   BLOCK   13
+ BLOCK   14 CONTAINS LINES   72 TO   75    -   BLOCK   14
+ BLOCK   15 CONTAINS LINES   76 TO   79    -   BLOCK   15
+ BLOCK   16 CONTAINS LINES   80 TO   84    -   BLOCK   16
+ BLOCK   17 CONTAINS LINES   85 TO   86    -   BLOCK   17
+ BLOCK   18 CONTAINS LINES   87 TO   90    -   BLOCK   18
+ BLOCK   19 CONTAINS LINES   91 TO   94    -   BLOCK   19
+ BLOCK   20 CONTAINS LINES   95 TO   98    -   BLOCK   20
+ BLOCK   21 CONTAINS LINES   99 TO  103    -   BLOCK   21
+ BLOCK   22 CONTAINS LINES  104 TO  104    -   BLOCK   22
+ BLOCK   23 CONTAINS LINES  105 TO  106    -   BLOCK   23
+ BLOCK   24 CONTAINS LINES  107 TO  107    -   BLOCK   24
+ BLOCK   25 CONTAINS LINES  108 TO  108    -   BLOCK   25
+ BLOCK   26 CONTAINS LINES  109 TO  112    -   BLOCK   26
+ BLOCK   27 CONTAINS LINES  113 TO  113    -   BLOCK   27
+
+
+
+
+
+ ----- STRUCTURED CODE FOUND -----
+
+ IF THEN ELSE                            
+                      FORMED OF BLOCKS   19   20   21   22
+       THE FOLLOWING BLOCKS ARE MERGED   19   20   21
+
+ IF THEN ELSE                            
+                      FORMED OF BLOCKS   14   15   16   17
+       THE FOLLOWING BLOCKS ARE MERGED   14   15   16
+
+ IF THEN ELSE                            
+                      FORMED OF BLOCKS    9   10   11   12
+       THE FOLLOWING BLOCKS ARE MERGED    9   10   11
+
+ IF THEN ELSE                            
+                      FORMED OF BLOCKS    4    5    6    7
+       THE FOLLOWING BLOCKS ARE MERGED    4    5    6
+
+
+
+
+
+ ----- CONNECTION DISPLAY -----
+
+ BLOCK    1 CONNECTS TO BLOCKS    2
+ BLOCK    2 CONNECTS TO BLOCKS    3   27
+ BLOCK    3 CONNECTS TO BLOCKS    4    8
+ BLOCK    4 CONNECTS TO BLOCKS    7
+ BLOCK    7 CONNECTS TO BLOCKS   26
+ BLOCK    8 CONNECTS TO BLOCKS    9   13
+ BLOCK    9 CONNECTS TO BLOCKS   12
+ BLOCK   12 CONNECTS TO BLOCKS   25
+ BLOCK   13 CONNECTS TO BLOCKS   14   18
+ BLOCK   14 CONNECTS TO BLOCKS   17
+ BLOCK   17 CONNECTS TO BLOCKS   24
+ BLOCK   18 CONNECTS TO BLOCKS   19   23
+ BLOCK   19 CONNECTS TO BLOCKS   22
+ BLOCK   22 CONNECTS TO BLOCKS   19   23
+ BLOCK   23 CONNECTS TO BLOCKS   24
+ BLOCK   24 CONNECTS TO BLOCKS   25
+ BLOCK   25 CONNECTS TO BLOCKS   26
+ BLOCK   26 CONNECTS TO BLOCKS    2
+
+
+
+ THE LINES OF CODE CONTAINED IN EACH BLOCK ARE
+
+ BLOCK    1 CONTAINS LINES   16 TO   25    -   BLOCK    1
+ BLOCK    2 CONTAINS LINES   27 TO   29    -   BLOCK    2
+ BLOCK    3 CONTAINS LINES   30 TO   33    -   BLOCK    3
+ BLOCK    4 CONTAINS LINES   34 TO   46    -  BLOCKS    4 TO    6
+ BLOCK    7 CONTAINS LINES   47 TO   48    -   BLOCK    7
+ BLOCK    8 CONTAINS LINES   49 TO   52    -   BLOCK    8
+ BLOCK    9 CONTAINS LINES   53 TO   65    -  BLOCKS    9 TO   11
+ BLOCK   12 CONTAINS LINES   66 TO   67    -   BLOCK   12
+ BLOCK   13 CONTAINS LINES   68 TO   71    -   BLOCK   13
+ BLOCK   14 CONTAINS LINES   72 TO   84    -  BLOCKS   14 TO   16
+ BLOCK   17 CONTAINS LINES   85 TO   86    -   BLOCK   17
+ BLOCK   18 CONTAINS LINES   87 TO   90    -   BLOCK   18
+ BLOCK   19 CONTAINS LINES   91 TO  103    -  BLOCKS   19 TO   21
+ BLOCK   22 CONTAINS LINES  104 TO  104    -   BLOCK   22
+ BLOCK   23 CONTAINS LINES  105 TO  106    -   BLOCK   23
+ BLOCK   24 CONTAINS LINES  107 TO  107    -   BLOCK   24
+ BLOCK   25 CONTAINS LINES  108 TO  108    -   BLOCK   25
+ BLOCK   26 CONTAINS LINES  109 TO  112    -   BLOCK   26
+ BLOCK   27 CONTAINS LINES  113 TO  113    -   BLOCK   27
+
+
+
+
+
+ ----- STRUCTURED CODE FOUND -----
+
+ SIMPLE COLLAPSE                         
+                      FORMED OF BLOCKS   19   22
+       THE FOLLOWING BLOCKS ARE MERGED   19   22
+
+ FOR LOOP                                
+                      FORMED OF BLOCKS   18   19   23
+       THE FOLLOWING BLOCKS ARE MERGED   18   19
+
+ SIMPLE COLLAPSE                         
+                      FORMED OF BLOCKS   14   17
+       THE FOLLOWING BLOCKS ARE MERGED   14   17
+
+ SIMPLE COLLAPSE                         
+                      FORMED OF BLOCKS    9   12
+       THE FOLLOWING BLOCKS ARE MERGED    9   12
+
+ SIMPLE COLLAPSE                         
+                      FORMED OF BLOCKS    4    7
+       THE FOLLOWING BLOCKS ARE MERGED    4    7
+
+
+
+
+
+ ----- CONNECTION DISPLAY -----
+
+ BLOCK    1 CONNECTS TO BLOCKS    2
+ BLOCK    2 CONNECTS TO BLOCKS    3   27
+ BLOCK    3 CONNECTS TO BLOCKS    4    8
+ BLOCK    4 CONNECTS TO BLOCKS   26
+ BLOCK    8 CONNECTS TO BLOCKS    9   13
+ BLOCK    9 CONNECTS TO BLOCKS   25
+ BLOCK   13 CONNECTS TO BLOCKS   14   18
+ BLOCK   14 CONNECTS TO BLOCKS   24
+ BLOCK   18 CONNECTS TO BLOCKS   23
+ BLOCK   23 CONNECTS TO BLOCKS   24
+ BLOCK   24 CONNECTS TO BLOCKS   25
+ BLOCK   25 CONNECTS TO BLOCKS   26
+ BLOCK   26 CONNECTS TO BLOCKS    2
+
+
+
+ THE LINES OF CODE CONTAINED IN EACH BLOCK ARE
+
+ BLOCK    1 CONTAINS LINES   16 TO   25    -   BLOCK    1
+ BLOCK    2 CONTAINS LINES   27 TO   29    -   BLOCK    2
+ BLOCK    3 CONTAINS LINES   30 TO   33    -   BLOCK    3
+ BLOCK    4 CONTAINS LINES   34 TO   48    -  BLOCKS    4 TO    7
+ BLOCK    8 CONTAINS LINES   49 TO   52    -   BLOCK    8
+ BLOCK    9 CONTAINS LINES   53 TO   67    -  BLOCKS    9 TO   12
+ BLOCK   13 CONTAINS LINES   68 TO   71    -   BLOCK   13
+ BLOCK   14 CONTAINS LINES   72 TO   86    -  BLOCKS   14 TO   17
+ BLOCK   18 CONTAINS LINES   87 TO  104    -  BLOCKS   18 TO   22
+ BLOCK   23 CONTAINS LINES  105 TO  106    -   BLOCK   23
+ BLOCK   24 CONTAINS LINES  107 TO  107    -   BLOCK   24
+ BLOCK   25 CONTAINS LINES  108 TO  108    -   BLOCK   25
+ BLOCK   26 CONTAINS LINES  109 TO  112    -   BLOCK   26
+ BLOCK   27 CONTAINS LINES  113 TO  113    -   BLOCK   27
+
+
+
+
+
+ ----- STRUCTURED CODE FOUND -----
+
+ SIMPLE COLLAPSE                         
+                      FORMED OF BLOCKS   18   23
+       THE FOLLOWING BLOCKS ARE MERGED   18   23
+
+ IF THEN ELSE                            
+                      FORMED OF BLOCKS   13   14   18   24
+       THE FOLLOWING BLOCKS ARE MERGED   13   14   18
+
+
+
+
+
+ ----- CONNECTION DISPLAY -----
+
+ BLOCK    1 CONNECTS TO BLOCKS    2
+ BLOCK    2 CONNECTS TO BLOCKS    3   27
+ BLOCK    3 CONNECTS TO BLOCKS    4    8
+ BLOCK    4 CONNECTS TO BLOCKS   26
+ BLOCK    8 CONNECTS TO BLOCKS    9   13
+ BLOCK    9 CONNECTS TO BLOCKS   25
+ BLOCK   13 CONNECTS TO BLOCKS   24
+ BLOCK   24 CONNECTS TO BLOCKS   25
+ BLOCK   25 CONNECTS TO BLOCKS   26
+ BLOCK   26 CONNECTS TO BLOCKS    2
+
+
+
+ THE LINES OF CODE CONTAINED IN EACH BLOCK ARE
+
+ BLOCK    1 CONTAINS LINES   16 TO   25    -   BLOCK    1
+ BLOCK    2 CONTAINS LINES   27 TO   29    -   BLOCK    2
+ BLOCK    3 CONTAINS LINES   30 TO   33    -   BLOCK    3
+ BLOCK    4 CONTAINS LINES   34 TO   48    -  BLOCKS    4 TO    7
+ BLOCK    8 CONTAINS LINES   49 TO   52    -   BLOCK    8
+ BLOCK    9 CONTAINS LINES   53 TO   67    -  BLOCKS    9 TO   12
+ BLOCK   13 CONTAINS LINES   68 TO  106    -  BLOCKS   13 TO   23
+ BLOCK   24 CONTAINS LINES  107 TO  107    -   BLOCK   24
+ BLOCK   25 CONTAINS LINES  108 TO  108    -   BLOCK   25
+ BLOCK   26 CONTAINS LINES  109 TO  112    -   BLOCK   26
+ BLOCK   27 CONTAINS LINES  113 TO  113    -   BLOCK   27
+
+
+
+
+
+ ----- STRUCTURED CODE FOUND -----
+
+ SIMPLE COLLAPSE                         
+                      FORMED OF BLOCKS   13   24
+       THE FOLLOWING BLOCKS ARE MERGED   13   24
+
+ IF THEN ELSE                            
+                      FORMED OF BLOCKS    8    9   13   25
+       THE FOLLOWING BLOCKS ARE MERGED    8    9   13
+
+
+
+
+
+ ----- CONNECTION DISPLAY -----
+
+ BLOCK    1 CONNECTS TO BLOCKS    2
+ BLOCK    2 CONNECTS TO BLOCKS    3   27
+ BLOCK    3 CONNECTS TO BLOCKS    4    8
+ BLOCK    4 CONNECTS TO BLOCKS   26
+ BLOCK    8 CONNECTS TO BLOCKS   25
+ BLOCK   25 CONNECTS TO BLOCKS   26
+ BLOCK   26 CONNECTS TO BLOCKS    2
+
+
+
+ THE LINES OF CODE CONTAINED IN EACH BLOCK ARE
+
+ BLOCK    1 CONTAINS LINES   16 TO   25    -   BLOCK    1
+ BLOCK    2 CONTAINS LINES   27 TO   29    -   BLOCK    2
+ BLOCK    3 CONTAINS LINES   30 TO   33    -   BLOCK    3
+ BLOCK    4 CONTAINS LINES   34 TO   48    -  BLOCKS    4 TO    7
+ BLOCK    8 CONTAINS LINES   49 TO  107    -  BLOCKS    8 TO   24
+ BLOCK   25 CONTAINS LINES  108 TO  108    -   BLOCK   25
+ BLOCK   26 CONTAINS LINES  109 TO  112    -   BLOCK   26
+ BLOCK   27 CONTAINS LINES  113 TO  113    -   BLOCK   27
+
+
+
+
+
+ ----- STRUCTURED CODE FOUND -----
+
+ SIMPLE COLLAPSE                         
+                      FORMED OF BLOCKS    8   25
+       THE FOLLOWING BLOCKS ARE MERGED    8   25
+
+ IF THEN ELSE                            
+                      FORMED OF BLOCKS    3    4    8   26
+       THE FOLLOWING BLOCKS ARE MERGED    3    4    8
+
+
+
+
+
+ ----- CONNECTION DISPLAY -----
+
+ BLOCK    1 CONNECTS TO BLOCKS    2
+ BLOCK    2 CONNECTS TO BLOCKS    3   27
+ BLOCK    3 CONNECTS TO BLOCKS   26
+ BLOCK   26 CONNECTS TO BLOCKS    2
+
+
+
+ THE LINES OF CODE CONTAINED IN EACH BLOCK ARE
+
+ BLOCK    1 CONTAINS LINES   16 TO   25    -   BLOCK    1
+ BLOCK    2 CONTAINS LINES   27 TO   29    -   BLOCK    2
+ BLOCK    3 CONTAINS LINES   30 TO  108    -  BLOCKS    3 TO   25
+ BLOCK   26 CONTAINS LINES  109 TO  112    -   BLOCK   26
+ BLOCK   27 CONTAINS LINES  113 TO  113    -   BLOCK   27
+
+
+
+
+
+ ----- STRUCTURED CODE FOUND -----
+
+ SIMPLE COLLAPSE                         
+                      FORMED OF BLOCKS    3   26
+       THE FOLLOWING BLOCKS ARE MERGED    3   26
+
+ WHILE LOOP                              
+                      FORMED OF BLOCKS    2    3   27
+       THE FOLLOWING BLOCKS ARE MERGED    2    3
+
+ SIMPLE COLLAPSE                         
+                      FORMED OF BLOCKS    1    2
+       THE FOLLOWING BLOCKS ARE MERGED    1    2
+
+ SIMPLE COLLAPSE                         
+                      FORMED OF BLOCKS    1   27
+       THE FOLLOWING BLOCKS ARE MERGED    1   27
+
+
+
+
+
+ STRUCTURE REDUCED TO 1 BLOCK
+
+
+
+
+
+ ESSENTIAL KNOTS =    0
+ **********************
+
+ ESSENTIAL COMPLEXITY OF MCCABE =    1
+ *************************************
+
+
+ PROCEDURE STRUCTURED
+ ********************
+
+ =====================================================================================================================
+                  EXECUTABLE     BASIC   AVERAGE   ORDER 1 MAX ORDER                               ESSENTIAL ESSENTIAL
+ PROCEDURE             LINES    BLOCKS    LENGTH INTERVALS INTERVALS REDUCIBLE    MCCABE     KNOTS    MCCABE     KNOTS
+ =====================================================================================================================
+
+ *MAIN                   96        27      3.56         7         3       YES        11         8         1         0
+
+ ---------------------------------------------------------------------------------------------------------------------
+
+ TOTAL FOR PROGRAM       96        27      3.56         7         3       YES        11         8         1         0
+
+
+
+
+
+ =========================================================
+                                           TOTAL MAX DEPTH
+ PROCEDURE           ENTRIES     EXITS     LOOPS     LOOPS
+ =========================================================
+
+ *MAIN                    1         1         2         2
+
+ ---------------------------------------------------------
+
+ TOTAL FOR PROGRAM        1         1         2         2
+
+
+
+
+
+ THE PROGRAM CONTAINS    1 PROCEDURES
+
+
+ THE ESSENTIAL MCCABE MEASURE OF 1 INDICATES THAT THE PROGRAM IS WELL STRUCTURED

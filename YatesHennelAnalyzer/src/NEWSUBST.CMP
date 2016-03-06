@@ -1,0 +1,704 @@
+ STRUCTURED PROGRAMMING VERIFICATION WILL USE THE FOLLOWING  7 STRUCTURES
+ ------------------------------------------------------------------------
+
+ SIMPLE COLLAPSE                         
+
+ REPEAT                                  
+
+ CASE                                    
+
+ WHILE LOOP                              
+
+ IF THEN                                 
+
+ IF THEN ELSE                            
+
+ FOR LOOP                                
+
+
+
+
+
+                                  *****************************************************
+                                  *****************************************************
+                                  **                                                 **
+                                  **                                                 **
+                                  **             COMPLEXITY ANALYSIS FOR             **
+                                  **                                                 **
+                                  **                                                 **
+                                  **                 PROCEDURE *MAIN                 **
+                                  **                                                 **
+                                  **                                                 **
+                                  *****************************************************
+                                  *****************************************************
+
+
+
+
+
+ LIST OF KNOTS
+ -------------
+
+ =======================================================
+  FROM   TO    FROM   TO     DOWN-DOWN  UP-DOWN    UP-UP
+ =======================================================
+
+    31   36      35   39         T
+    43  123     122   41                   T
+    52   92      91   50                   T
+    58   63      62   66         T
+    75   88      87   91         T
+   100  106     105  120         T
+   111  116     115  119         T
+
+ -------------------------------------------------------
+
+ TOTAL NUMBER OF KNOTS     =    7
+
+ NUMBER OF DOWN-DOWN KNOTS =    5
+ NUMBER OF UP-DOWN KNOTS   =    2
+ NUMBER OF UP-UP KNOTS     =    0
+
+ BASIC BLOCK DISPLAY
+ -------------------
+
+ =======================================================================================================================
+  LINE                                                                                                       BASIC BLOCK
+ NUMBER                                                 STATEMENT                                                 NUMBER
+ =======================================================================================================================
+
+    22  begin                                                                                                          1
+    23    writeln ( 'Enter a string ' ) ;                                                                              1
+    24    readln ( old ) ;                                                                                             1
+    25    writeln ( 'Type thee numbers ' ) ;                                                                           1
+    26    readln ( line1 ) ;                                                                                           1
+    27    readln ( line2 ) ;                                                                                           1
+    28    readln ( glob ) ;                                                                                            1
+    29    if                                                                                                           1
+    30       ( glob = 1 )                                                                                              1
+    31    then                                                                                                         1
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    32     BEGIN                                                                                                       2
+    33       stat := OK                                                                                                2
+    34     END                                                                                                         2
+    35    else                                                                                                         2
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    36     BEGIN                                                                                                       3
+    37       stat := ERR                                                                                               3
+    38     END ;                                                                                                       3
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    39    done := ( line1 <= 0 ) ;                                                                                     4
+    40    line := line1 ;                                                                                              4
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    41    while                                                                                                        5
+    42       ( not done ) and ( line <= line2 )                                                                        5
+    43    do                                                                                                           5
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    44     begin                                                                                                       6
+    45       j := 1 ;                                                                                                  6
+    46       subbed := false ;                                                                                         6
+    47       lastm := 0 ;                                                                                              6
+    48       k := 1 ;                                                                                                  6
+    49       gflag := 0 ;                                                                                              6
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    50       while                                                                                                     7
+    51          ( old [ k ] <> ENDSTR ) and ( gflag <> - 1 )                                                           7
+    52       do                                                                                                        7
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    53        begin                                                                                                    8
+    54          writeln ( 'Type a number' ) ;                                                                          8
+    55          readln ( gflag ) ;                                                                                     8
+    56          if                                                                                                     8
+    57             ( gflag = 1 ) or ( not subbed )                                                                     8
+    58          then                                                                                                   8
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    59           BEGIN                                                                                                 9
+    60             m := 4                                                                                              9
+    61           END                                                                                                   9
+    62          else                                                                                                   9
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    63           BEGIN                                                                                                10
+    64             m := 0                                                                                             10
+    65           END ;                                                                                                10
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    66          if                                                                                                    11
+    67             ( m > 0 ) and ( lastm <> m )                                                                       11
+    68          then                                                                                                  11
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    69           begin                                                                                                12
+    70             subbed := true ;                                                                                   12
+    71             lastm := m                                                                                         12
+    72           end ;                                                                                                12
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    73          if                                                                                                    13
+    74             ( m = 0 ) or ( m = k )                                                                             13
+    75          then                                                                                                  13
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    76           begin                                                                                                14
+    77             writeln ( 'Type a number. To end -1' ) ;                                                           14
+    78             readln ( junk ) ;                                                                                  14
+    79             if                                                                                                 14
+    80                junk = - 1                                                                                      14
+    81             then                                                                                               14
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    82              BEGIN                                                                                             15
+    83                gflag := junk                                                                                   15
+    84              END ;                                                                                             15
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    85             k := k + 1                                                                                         16
+    86           end                                                                                                  16
+    87          else                                                                                                  16
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    88           BEGIN                                                                                                17
+    89             k := m                                                                                             17
+    90           END ;                                                                                                17
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    91        end ;                                                                                                   18
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    92       if                                                                                                       19
+    93          ( subbed )                                                                                            19
+    94       then                                                                                                     19
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    95        begin                                                                                                   20
+    96          writeln ( 'Type an number' ) ;                                                                        20
+    97          read ( x ) ;                                                                                          20
+    98          if                                                                                                    20
+    99             ( x = 1 )                                                                                          20
+   100          then                                                                                                  20
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+   101           begin                                                                                                21
+   102             stat := ERR ;                                                                                      21
+   103             done := true                                                                                       21
+   104           end                                                                                                  21
+   105          else                                                                                                  21
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+   106           begin                                                                                                22
+   107             line2 := line2 + curln - line ;                                                                    22
+   108             line := curln ;                                                                                    22
+   109             if                                                                                                 22
+   110                ( stat = ERR )                                                                                  22
+   111             then                                                                                               22
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+   112              BEGIN                                                                                             23
+   113                done := true                                                                                    23
+   114              END                                                                                               23
+   115             else                                                                                               23
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+   116              BEGIN                                                                                             24
+   117                stat := OK                                                                                      24
+   118              END                                                                                               24
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+   119           end                                                                                                  25
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+   120        end ;                                                                                                   26
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+   121       line := line + 1                                                                                         27
+   122     end ;                                                                                                      27
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+   123  end .                                                                                                         28
+
+
+
+
+
+ AVERAGE LENGTH OF BASIC BLOCK =  3.64 EXECUTABLE LINES
+
+
+ PROCEDURE ENTRY AT BASIC BLOCK    1
+
+ PROCEDURE EXIT  AT BASIC BLOCK   28
+
+
+
+
+
+ KNOTS
+ -----
+
+ ===============================================================================
+  FROM       TO        FROM       TO          FROM       TO        FROM       TO
+ BLOCK    BLOCK       BLOCK    BLOCK          LINE     LINE        LINE     LINE
+ ===============================================================================
+
+     1        3           2        4            31       36          35       39
+     5       28          27        5            43      123         122       41
+     7       19          18        7            52       92          91       50
+     8       10           9       11            58       63          62       66
+    13       17          16       18            75       88          87       91
+    20       22          21       26           100      106         105      120
+    22       24          23       25           111      116         115      119
+
+
+
+
+
+ NUMBER OF BLOCK CONNECTIONS  =   37
+ NUMBER OF BLOCKS             =   28
+
+ COMPLEXITY MEASURE OF MCCABE =   11
+ ***********************************
+
+ NUMBER OF KNOTS              =    7
+ ***********************************
+
+ INTERVAL ANALYSIS
+ -----------------
+
+
+
+
+
+ INTERVALS OF ORDER    1
+ -----------------------
+
+
+
+ HEADER BLOCK       1
+ INTERVAL BLOCKS    1    2    3    4
+ EXIT BLOCK         4
+
+
+ HEADER BLOCK       5 ( HEAD OF LOOP )
+ INTERVAL BLOCKS    5    6   28
+ EXIT BLOCK(S)      6   28
+
+
+ HEADER BLOCK       7 ( HEAD OF LOOP )
+ INTERVAL BLOCKS    7    8   19    9   10   20   11   21   22   12   13   23
+                   24   14   17   25   15   16   18   26   27
+ EXIT BLOCK        27
+
+
+ NUMBER OF INTERVALS =    3
+ AVERAGE LENGTH OF INTERVAL =  9.33 BLOCKS
+
+
+
+
+
+ INTERVALS OF ORDER    2
+ -----------------------
+
+
+
+ HEADER BLOCK       1
+ INTERVAL BLOCKS    1
+ EXIT BLOCK         1
+
+
+ HEADER BLOCK       5 ( HEAD OF LOOP )
+ INTERVAL BLOCKS    5    7
+ NO EXIT NODES
+
+
+ NUMBER OF INTERVALS =    2
+ AVERAGE LENGTH OF INTERVAL =  1.50 BLOCKS
+
+
+
+
+
+ INTERVALS OF ORDER    3
+ -----------------------
+
+
+
+ HEADER BLOCK       1
+ INTERVAL BLOCKS    1    5
+ EXIT BLOCK         5
+
+
+ NUMBER OF INTERVALS =    1
+ AVERAGE LENGTH OF INTERVAL =  2.00 BLOCKS
+
+
+ PROCEDURE REDUCIBLE IN THE INTERVAL SENSE
+ *****************************************
+
+ STRUCTURED PROGRAMMING VERIFICATION
+ -----------------------------------
+
+
+
+
+
+ ----- CONNECTION DISPLAY -----
+
+ BLOCK    1 CONNECTS TO BLOCKS    2    3
+ BLOCK    2 CONNECTS TO BLOCKS    4
+ BLOCK    3 CONNECTS TO BLOCKS    4
+ BLOCK    4 CONNECTS TO BLOCKS    5
+ BLOCK    5 CONNECTS TO BLOCKS    6   28
+ BLOCK    6 CONNECTS TO BLOCKS    7
+ BLOCK    7 CONNECTS TO BLOCKS    8   19
+ BLOCK    8 CONNECTS TO BLOCKS    9   10
+ BLOCK    9 CONNECTS TO BLOCKS   11
+ BLOCK   10 CONNECTS TO BLOCKS   11
+ BLOCK   11 CONNECTS TO BLOCKS   12   13
+ BLOCK   12 CONNECTS TO BLOCKS   13
+ BLOCK   13 CONNECTS TO BLOCKS   14   17
+ BLOCK   14 CONNECTS TO BLOCKS   15   16
+ BLOCK   15 CONNECTS TO BLOCKS   16
+ BLOCK   16 CONNECTS TO BLOCKS   18
+ BLOCK   17 CONNECTS TO BLOCKS   18
+ BLOCK   18 CONNECTS TO BLOCKS    7
+ BLOCK   19 CONNECTS TO BLOCKS   20   27
+ BLOCK   20 CONNECTS TO BLOCKS   21   22
+ BLOCK   21 CONNECTS TO BLOCKS   26
+ BLOCK   22 CONNECTS TO BLOCKS   23   24
+ BLOCK   23 CONNECTS TO BLOCKS   25
+ BLOCK   24 CONNECTS TO BLOCKS   25
+ BLOCK   25 CONNECTS TO BLOCKS   26
+ BLOCK   26 CONNECTS TO BLOCKS   27
+ BLOCK   27 CONNECTS TO BLOCKS    5
+
+
+
+ THE LINES OF CODE CONTAINED IN EACH BLOCK ARE
+
+ BLOCK    1 CONTAINS LINES   22 TO   31    -   BLOCK    1
+ BLOCK    2 CONTAINS LINES   32 TO   35    -   BLOCK    2
+ BLOCK    3 CONTAINS LINES   36 TO   38    -   BLOCK    3
+ BLOCK    4 CONTAINS LINES   39 TO   40    -   BLOCK    4
+ BLOCK    5 CONTAINS LINES   41 TO   43    -   BLOCK    5
+ BLOCK    6 CONTAINS LINES   44 TO   49    -   BLOCK    6
+ BLOCK    7 CONTAINS LINES   50 TO   52    -   BLOCK    7
+ BLOCK    8 CONTAINS LINES   53 TO   58    -   BLOCK    8
+ BLOCK    9 CONTAINS LINES   59 TO   62    -   BLOCK    9
+ BLOCK   10 CONTAINS LINES   63 TO   65    -   BLOCK   10
+ BLOCK   11 CONTAINS LINES   66 TO   68    -   BLOCK   11
+ BLOCK   12 CONTAINS LINES   69 TO   72    -   BLOCK   12
+ BLOCK   13 CONTAINS LINES   73 TO   75    -   BLOCK   13
+ BLOCK   14 CONTAINS LINES   76 TO   81    -   BLOCK   14
+ BLOCK   15 CONTAINS LINES   82 TO   84    -   BLOCK   15
+ BLOCK   16 CONTAINS LINES   85 TO   87    -   BLOCK   16
+ BLOCK   17 CONTAINS LINES   88 TO   90    -   BLOCK   17
+ BLOCK   18 CONTAINS LINES   91 TO   91    -   BLOCK   18
+ BLOCK   19 CONTAINS LINES   92 TO   94    -   BLOCK   19
+ BLOCK   20 CONTAINS LINES   95 TO  100    -   BLOCK   20
+ BLOCK   21 CONTAINS LINES  101 TO  105    -   BLOCK   21
+ BLOCK   22 CONTAINS LINES  106 TO  111    -   BLOCK   22
+ BLOCK   23 CONTAINS LINES  112 TO  115    -   BLOCK   23
+ BLOCK   24 CONTAINS LINES  116 TO  118    -   BLOCK   24
+ BLOCK   25 CONTAINS LINES  119 TO  119    -   BLOCK   25
+ BLOCK   26 CONTAINS LINES  120 TO  120    -   BLOCK   26
+ BLOCK   27 CONTAINS LINES  121 TO  122    -   BLOCK   27
+ BLOCK   28 CONTAINS LINES  123 TO  123    -   BLOCK   28
+
+
+
+
+
+ ----- STRUCTURED CODE FOUND -----
+
+ IF THEN ELSE                            
+                      FORMED OF BLOCKS   22   23   24   25
+       THE FOLLOWING BLOCKS ARE MERGED   22   23   24
+
+ IF THEN                                 
+                      FORMED OF BLOCKS   14   15   16
+       THE FOLLOWING BLOCKS ARE MERGED   14   15
+
+ IF THEN                                 
+                      FORMED OF BLOCKS   11   12   13
+       THE FOLLOWING BLOCKS ARE MERGED   11   12
+
+ IF THEN ELSE                            
+                      FORMED OF BLOCKS    8    9   10   11
+       THE FOLLOWING BLOCKS ARE MERGED    8    9   10
+
+ IF THEN ELSE                            
+                      FORMED OF BLOCKS    1    2    3    4
+       THE FOLLOWING BLOCKS ARE MERGED    1    2    3
+
+
+
+
+
+ ----- CONNECTION DISPLAY -----
+
+ BLOCK    1 CONNECTS TO BLOCKS    4
+ BLOCK    4 CONNECTS TO BLOCKS    5
+ BLOCK    5 CONNECTS TO BLOCKS    6   28
+ BLOCK    6 CONNECTS TO BLOCKS    7
+ BLOCK    7 CONNECTS TO BLOCKS    8   19
+ BLOCK    8 CONNECTS TO BLOCKS   11
+ BLOCK   11 CONNECTS TO BLOCKS   13
+ BLOCK   13 CONNECTS TO BLOCKS   14   17
+ BLOCK   14 CONNECTS TO BLOCKS   16
+ BLOCK   16 CONNECTS TO BLOCKS   18
+ BLOCK   17 CONNECTS TO BLOCKS   18
+ BLOCK   18 CONNECTS TO BLOCKS    7
+ BLOCK   19 CONNECTS TO BLOCKS   20   27
+ BLOCK   20 CONNECTS TO BLOCKS   21   22
+ BLOCK   21 CONNECTS TO BLOCKS   26
+ BLOCK   22 CONNECTS TO BLOCKS   25
+ BLOCK   25 CONNECTS TO BLOCKS   26
+ BLOCK   26 CONNECTS TO BLOCKS   27
+ BLOCK   27 CONNECTS TO BLOCKS    5
+
+
+
+ THE LINES OF CODE CONTAINED IN EACH BLOCK ARE
+
+ BLOCK    1 CONTAINS LINES   22 TO   38    -  BLOCKS    1 TO    3
+ BLOCK    4 CONTAINS LINES   39 TO   40    -   BLOCK    4
+ BLOCK    5 CONTAINS LINES   41 TO   43    -   BLOCK    5
+ BLOCK    6 CONTAINS LINES   44 TO   49    -   BLOCK    6
+ BLOCK    7 CONTAINS LINES   50 TO   52    -   BLOCK    7
+ BLOCK    8 CONTAINS LINES   53 TO   65    -  BLOCKS    8 TO   10
+ BLOCK   11 CONTAINS LINES   66 TO   72    -  BLOCKS   11 TO   12
+ BLOCK   13 CONTAINS LINES   73 TO   75    -   BLOCK   13
+ BLOCK   14 CONTAINS LINES   76 TO   84    -  BLOCKS   14 TO   15
+ BLOCK   16 CONTAINS LINES   85 TO   87    -   BLOCK   16
+ BLOCK   17 CONTAINS LINES   88 TO   90    -   BLOCK   17
+ BLOCK   18 CONTAINS LINES   91 TO   91    -   BLOCK   18
+ BLOCK   19 CONTAINS LINES   92 TO   94    -   BLOCK   19
+ BLOCK   20 CONTAINS LINES   95 TO  100    -   BLOCK   20
+ BLOCK   21 CONTAINS LINES  101 TO  105    -   BLOCK   21
+ BLOCK   22 CONTAINS LINES  106 TO  118    -  BLOCKS   22 TO   24
+ BLOCK   25 CONTAINS LINES  119 TO  119    -   BLOCK   25
+ BLOCK   26 CONTAINS LINES  120 TO  120    -   BLOCK   26
+ BLOCK   27 CONTAINS LINES  121 TO  122    -   BLOCK   27
+ BLOCK   28 CONTAINS LINES  123 TO  123    -   BLOCK   28
+
+
+
+
+
+ ----- STRUCTURED CODE FOUND -----
+
+ SIMPLE COLLAPSE                         
+                      FORMED OF BLOCKS   22   25
+       THE FOLLOWING BLOCKS ARE MERGED   22   25
+
+ IF THEN ELSE                            
+                      FORMED OF BLOCKS   20   21   22   26
+       THE FOLLOWING BLOCKS ARE MERGED   20   21   22
+
+ SIMPLE COLLAPSE                         
+                      FORMED OF BLOCKS   14   16
+       THE FOLLOWING BLOCKS ARE MERGED   14   16
+
+ IF THEN ELSE                            
+                      FORMED OF BLOCKS   13   14   17   18
+       THE FOLLOWING BLOCKS ARE MERGED   13   14   17
+
+ SIMPLE COLLAPSE                         
+                      FORMED OF BLOCKS   11   13
+       THE FOLLOWING BLOCKS ARE MERGED   11   13
+
+ SIMPLE COLLAPSE                         
+                      FORMED OF BLOCKS   11   18
+       THE FOLLOWING BLOCKS ARE MERGED   11   18
+
+ SIMPLE COLLAPSE                         
+                      FORMED OF BLOCKS    8   11
+       THE FOLLOWING BLOCKS ARE MERGED    8   11
+
+ WHILE LOOP                              
+                      FORMED OF BLOCKS    7    8   19
+       THE FOLLOWING BLOCKS ARE MERGED    7    8
+
+ SIMPLE COLLAPSE                         
+                      FORMED OF BLOCKS    6    7
+       THE FOLLOWING BLOCKS ARE MERGED    6    7
+
+ SIMPLE COLLAPSE                         
+                      FORMED OF BLOCKS    6   19
+       THE FOLLOWING BLOCKS ARE MERGED    6   19
+
+ SIMPLE COLLAPSE                         
+                      FORMED OF BLOCKS    1    4
+       THE FOLLOWING BLOCKS ARE MERGED    1    4
+
+
+
+
+
+ ----- CONNECTION DISPLAY -----
+
+ BLOCK    1 CONNECTS TO BLOCKS    5
+ BLOCK    5 CONNECTS TO BLOCKS    6   28
+ BLOCK    6 CONNECTS TO BLOCKS   20   27
+ BLOCK   20 CONNECTS TO BLOCKS   26
+ BLOCK   26 CONNECTS TO BLOCKS   27
+ BLOCK   27 CONNECTS TO BLOCKS    5
+
+
+
+ THE LINES OF CODE CONTAINED IN EACH BLOCK ARE
+
+ BLOCK    1 CONTAINS LINES   22 TO   40    -  BLOCKS    1 TO    4
+ BLOCK    5 CONTAINS LINES   41 TO   43    -   BLOCK    5
+ BLOCK    6 CONTAINS LINES   44 TO   94    -  BLOCKS    6 TO   19
+ BLOCK   20 CONTAINS LINES   95 TO  119    -  BLOCKS   20 TO   25
+ BLOCK   26 CONTAINS LINES  120 TO  120    -   BLOCK   26
+ BLOCK   27 CONTAINS LINES  121 TO  122    -   BLOCK   27
+ BLOCK   28 CONTAINS LINES  123 TO  123    -   BLOCK   28
+
+
+
+
+
+ ----- STRUCTURED CODE FOUND -----
+
+ SIMPLE COLLAPSE                         
+                      FORMED OF BLOCKS   20   26
+       THE FOLLOWING BLOCKS ARE MERGED   20   26
+
+ IF THEN                                 
+                      FORMED OF BLOCKS    6   20   27
+       THE FOLLOWING BLOCKS ARE MERGED    6   20
+
+
+
+
+
+ ----- CONNECTION DISPLAY -----
+
+ BLOCK    1 CONNECTS TO BLOCKS    5
+ BLOCK    5 CONNECTS TO BLOCKS    6   28
+ BLOCK    6 CONNECTS TO BLOCKS   27
+ BLOCK   27 CONNECTS TO BLOCKS    5
+
+
+
+ THE LINES OF CODE CONTAINED IN EACH BLOCK ARE
+
+ BLOCK    1 CONTAINS LINES   22 TO   40    -  BLOCKS    1 TO    4
+ BLOCK    5 CONTAINS LINES   41 TO   43    -   BLOCK    5
+ BLOCK    6 CONTAINS LINES   44 TO  120    -  BLOCKS    6 TO   26
+ BLOCK   27 CONTAINS LINES  121 TO  122    -   BLOCK   27
+ BLOCK   28 CONTAINS LINES  123 TO  123    -   BLOCK   28
+
+
+
+
+
+ ----- STRUCTURED CODE FOUND -----
+
+ SIMPLE COLLAPSE                         
+                      FORMED OF BLOCKS    6   27
+       THE FOLLOWING BLOCKS ARE MERGED    6   27
+
+ WHILE LOOP                              
+                      FORMED OF BLOCKS    5    6   28
+       THE FOLLOWING BLOCKS ARE MERGED    5    6
+
+ SIMPLE COLLAPSE                         
+                      FORMED OF BLOCKS    1    5
+       THE FOLLOWING BLOCKS ARE MERGED    1    5
+
+ SIMPLE COLLAPSE                         
+                      FORMED OF BLOCKS    1   28
+       THE FOLLOWING BLOCKS ARE MERGED    1   28
+
+
+
+
+
+ STRUCTURE REDUCED TO 1 BLOCK
+
+
+
+
+
+ ESSENTIAL KNOTS =    0
+ **********************
+
+ ESSENTIAL COMPLEXITY OF MCCABE =    1
+ *************************************
+
+
+ PROCEDURE STRUCTURED
+ ********************
+
+ =====================================================================================================================
+                  EXECUTABLE     BASIC   AVERAGE   ORDER 1 MAX ORDER                               ESSENTIAL ESSENTIAL
+ PROCEDURE             LINES    BLOCKS    LENGTH INTERVALS INTERVALS REDUCIBLE    MCCABE     KNOTS    MCCABE     KNOTS
+ =====================================================================================================================
+
+ *MAIN                  102        28      3.64         3         3       YES        11         7         1         0
+
+ ---------------------------------------------------------------------------------------------------------------------
+
+ TOTAL FOR PROGRAM      102        28      3.64         3         3       YES        11         7         1         0
+
+
+
+
+
+ =========================================================
+                                           TOTAL MAX DEPTH
+ PROCEDURE           ENTRIES     EXITS     LOOPS     LOOPS
+ =========================================================
+
+ *MAIN                    1         1         2         2
+
+ ---------------------------------------------------------
+
+ TOTAL FOR PROGRAM        1         1         2         2
+
+
+
+
+
+ THE PROGRAM CONTAINS    1 PROCEDURES
+
+
+ THE ESSENTIAL MCCABE MEASURE OF 1 INDICATES THAT THE PROGRAM IS WELL STRUCTURED

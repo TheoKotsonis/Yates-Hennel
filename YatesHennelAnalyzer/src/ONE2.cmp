@@ -1,0 +1,537 @@
+ STRUCTURED PROGRAMMING VERIFICATION WILL USE THE FOLLOWING 10 STRUCTURES
+ ------------------------------------------------------------------------
+
+ SIMPLE COLLAPSE                         
+
+ REPEAT                                  
+
+ CASE WITH SKIP                          
+
+ CASE WITHOUT SKIP                       
+
+ WHILE                                   
+
+ IF THEN                                 
+
+ DO WHILE                                
+
+ IF THEN ELSE                            
+
+ WHILE DO (ZERO TRIP)                    
+
+ FOR UNTIL(ZERO TRIP)                    
+
+
+ THESE STRUCTURES ARE GRAPH THEORETIC BASED AND NEED NOT NECESSARILY BE
+ IDENTIFIED WITH SYNTACTIC LANGUAGE CONSTRUCTS.
+
+
+
+
+
+
+
+
+
+
+                                  *****************************************************
+                                  *****************************************************
+                                  **                                                 **
+                                  **                                                 **
+                                  **             COMPLEXITY ANALYSIS FOR             **
+                                  **                                                 **
+                                  **                                                 **
+                                  **                 PROCEDURE main                  **
+                                  **                                                 **
+                                  **                                                 **
+                                  *****************************************************
+                                  *****************************************************
+
+
+
+
+
+ LIST OF KNOTS
+ -------------
+
+ =======================================================
+  FROM   TO    FROM   TO     DOWN-DOWN  UP-DOWN    UP-UP
+ =======================================================
+
+    28   50      49   25                   T
+    61   66      65   58                   T
+
+ -------------------------------------------------------
+
+ TOTAL NUMBER OF KNOTS     =    2
+
+ NUMBER OF DOWN-DOWN KNOTS =    0
+ NUMBER OF UP-DOWN KNOTS   =    2
+ NUMBER OF UP-UP KNOTS     =    0
+
+
+
+
+
+
+ BASIC BLOCK DISPLAY
+ -------------------
+
+ =======================================================================================================================
+  LINE                                                                                                       BASIC BLOCK
+ NUMBER                                                 STATEMENT                                                 NUMBER
+ =======================================================================================================================
+
+    10   main()                                                                                                        1
+    11   {                                                                                                             1
+    12     int                                                                                                         1
+    13       num ,                                                                                                     1
+    14       i ,                                                                                                       1
+    15       j ,                                                                                                       1
+    16       finalnum ;                                                                                                1
+    17     printf ( "Type a number up to %d: ", 10 ) ;                                                                 1
+    18     scanf ( "%d", & num ) ;                                                                                     1
+    19     if                                                                                                          1
+    20       (                                                                                                         1
+    21       num <= 10                                                                                                 1
+    22       )                                                                                                         1
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    23       {                                                                                                         2
+    24         i = 1 ;                                                                                                 2
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    25         while                                                                                                   3
+    26           (                                                                                                     3
+    27           i <= num                                                                                              3
+    28           )                                                                                                     3
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    29           {                                                                                                     4
+    30             finalnum = num + 4 ;                                                                                4
+    31             if                                                                                                  4
+    32               (                                                                                                 4
+    33               finalnum == 14                                                                                    4
+    34               )                                                                                                 4
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    35               {                                                                                                 5
+    36                 finalnum = finalnum - 1 ;  ;                                                                    5
+    37               }                                                                                                 5
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    38             if                                                                                                  6
+    39               (                                                                                                 6
+    40               finalnum < 10                                                                                     6
+    41               &&                                                                                                6
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    42               finalnum > 5                                                                                      7
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    43               )                                                                                                 8
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    44               {                                                                                                 9
+    45                 printf ( "Type a number up to %d: ", 10 ) ;                                                     9
+    46                 scanf ( "%d", & num ) ;                                                                         9
+    47               }                                                                                                 9
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    48             i = i + 1 ;                                                                                        10
+    49           }                                                                                                    10
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    50         i = i + num ;                                                                                          11
+    51         if                                                                                                     11
+    52           (                                                                                                    11
+    53           i == 20                                                                                              11
+    54           )                                                                                                    11
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    55           {                                                                                                    12
+    56             printf ( "Type a number up to %d: ", 10 ) ;                                                        12
+    57             scanf ( "%d", & j ) ;                                                                              12
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    58             while                                                                                              13
+    59               (                                                                                                13
+    60               j <= i                                                                                           13
+    61               )                                                                                                13
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    62               {                                                                                                14
+    63                 num = num + j ;                                                                                14
+    64                 j = j + 1 ;                                                                                    14
+    65               }                                                                                                14
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    66           }                                                                                                    15
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    67       }                                                                                                        16
+
+ -----------------------------------------------------------------------------------------------------------------------
+
+    68   }                                                                                                            17
+
+
+
+
+
+ AVERAGE LENGTH OF BASIC BLOCK =   3.12 EXECUTABLE LINES
+
+
+ PROCEDURE ENTRY AT BASIC BLOCK    1
+
+ PROCEDURE EXIT  AT BASIC BLOCK   17
+
+
+
+
+
+ KNOTS
+ -----
+
+ ===============================================================================
+  FROM       TO        FROM       TO          FROM       TO        FROM       TO
+ BLOCK    BLOCK       BLOCK    BLOCK          LINE     LINE        LINE     LINE
+ ===============================================================================
+
+     3       11          10        3            28       50          49       25
+    13       15          14       13            61       66          65       58
+
+
+
+
+
+ NUMBER OF BLOCK CONNECTIONS  =    23
+ NUMBER OF BLOCKS             =    17
+
+ COMPLEXITY MEASURE OF MCCABE =     8
+ ************************************
+
+ NUMBER OF KNOTS              =     2
+ ************************************
+
+
+
+
+
+
+ INTERVAL ANALYSIS
+ -----------------
+
+
+
+
+
+ INTERVALS OF ORDER    1
+ -----------------------
+
+
+
+ HEADER BLOCK       1
+ INTERVAL BLOCKS    1    2
+ EXIT BLOCK(S)      1    2
+
+
+ HEADER BLOCK       3 ( HEAD OF LOOP )
+ INTERVAL BLOCKS    3    4   11    5    6   12    7    8    9   10
+ EXIT BLOCK(S)     11   12
+
+
+ HEADER BLOCK      13 ( HEAD OF LOOP )
+ INTERVAL BLOCKS   13   14   15
+ EXIT BLOCK        15
+
+
+ HEADER BLOCK      16
+ INTERVAL BLOCKS   16
+ EXIT BLOCK        16
+
+
+ HEADER BLOCK      17
+ INTERVAL BLOCKS   17
+ EXIT BLOCK        17
+
+
+ NUMBER OF INTERVALS =    5
+ AVERAGE LENGTH OF INTERVAL =  3.40 BLOCKS
+
+
+
+
+
+ INTERVALS OF ORDER    2
+ -----------------------
+
+
+
+ HEADER BLOCK       1
+ INTERVAL BLOCKS    1    3   13   16   17
+ EXIT BLOCK        17
+
+
+ NUMBER OF INTERVALS =    1
+ AVERAGE LENGTH OF INTERVAL =  5.00 BLOCKS
+
+
+ PROCEDURE REDUCIBLE IN THE INTERVAL SENSE
+ *****************************************
+
+
+
+
+
+
+ STRUCTURED PROGRAMMING VERIFICATION
+ -----------------------------------
+
+
+
+
+
+ ----- CONNECTION DISPLAY -----
+
+ BLOCK    1 CONNECTS TO BLOCKS    2   17
+ BLOCK    2 CONNECTS TO BLOCKS    3
+ BLOCK    3 CONNECTS TO BLOCKS    4   11
+ BLOCK    4 CONNECTS TO BLOCKS    5    6
+ BLOCK    5 CONNECTS TO BLOCKS    6
+ BLOCK    6 CONNECTS TO BLOCKS    7    8
+ BLOCK    7 CONNECTS TO BLOCKS    8
+ BLOCK    8 CONNECTS TO BLOCKS    9   10
+ BLOCK    9 CONNECTS TO BLOCKS   10
+ BLOCK   10 CONNECTS TO BLOCKS    3
+ BLOCK   11 CONNECTS TO BLOCKS   12   16
+ BLOCK   12 CONNECTS TO BLOCKS   13
+ BLOCK   13 CONNECTS TO BLOCKS   14   15
+ BLOCK   14 CONNECTS TO BLOCKS   13
+ BLOCK   15 CONNECTS TO BLOCKS   16
+ BLOCK   16 CONNECTS TO BLOCKS   17
+
+
+
+ THE LINES OF CODE CONTAINED IN EACH BLOCK ARE
+
+ BLOCK    1 CONTAINS LINES   10 TO   22    -   BLOCK    1
+ BLOCK    2 CONTAINS LINES   23 TO   24    -   BLOCK    2
+ BLOCK    3 CONTAINS LINES   25 TO   28    -   BLOCK    3
+ BLOCK    4 CONTAINS LINES   29 TO   34    -   BLOCK    4
+ BLOCK    5 CONTAINS LINES   35 TO   37    -   BLOCK    5
+ BLOCK    6 CONTAINS LINES   38 TO   41    -   BLOCK    6
+ BLOCK    7 CONTAINS LINES   42 TO   42    -   BLOCK    7
+ BLOCK    8 CONTAINS LINES   43 TO   43    -   BLOCK    8
+ BLOCK    9 CONTAINS LINES   44 TO   47    -   BLOCK    9
+ BLOCK   10 CONTAINS LINES   48 TO   49    -   BLOCK   10
+ BLOCK   11 CONTAINS LINES   50 TO   54    -   BLOCK   11
+ BLOCK   12 CONTAINS LINES   55 TO   57    -   BLOCK   12
+ BLOCK   13 CONTAINS LINES   58 TO   61    -   BLOCK   13
+ BLOCK   14 CONTAINS LINES   62 TO   65    -   BLOCK   14
+ BLOCK   15 CONTAINS LINES   66 TO   66    -   BLOCK   15
+ BLOCK   16 CONTAINS LINES   67 TO   67    -   BLOCK   16
+ BLOCK   17 CONTAINS LINES   68 TO   68    -   BLOCK   17
+
+
+
+
+
+ ----- STRUCTURED CODE FOUND -----
+
+ WHILE                                   
+                      FORMED OF BLOCKS   13   14   15
+       THE FOLLOWING BLOCKS ARE MERGED   13   14
+
+ SIMPLE COLLAPSE                         
+                      FORMED OF BLOCKS   12   13
+       THE FOLLOWING BLOCKS ARE MERGED   12   13
+
+ SIMPLE COLLAPSE                         
+                      FORMED OF BLOCKS   12   15
+       THE FOLLOWING BLOCKS ARE MERGED   12   15
+
+ IF THEN                                 
+                      FORMED OF BLOCKS   11   12   16
+       THE FOLLOWING BLOCKS ARE MERGED   11   12
+
+ IF THEN                                 
+                      FORMED OF BLOCKS    8    9   10
+       THE FOLLOWING BLOCKS ARE MERGED    8    9
+
+ IF THEN                                 
+                      FORMED OF BLOCKS    6    7    8
+       THE FOLLOWING BLOCKS ARE MERGED    6    7
+
+ IF THEN                                 
+                      FORMED OF BLOCKS    4    5    6
+       THE FOLLOWING BLOCKS ARE MERGED    4    5
+
+
+
+
+
+ ----- CONNECTION DISPLAY -----
+
+ BLOCK    1 CONNECTS TO BLOCKS    2   17
+ BLOCK    2 CONNECTS TO BLOCKS    3
+ BLOCK    3 CONNECTS TO BLOCKS    4   11
+ BLOCK    4 CONNECTS TO BLOCKS    6
+ BLOCK    6 CONNECTS TO BLOCKS    8
+ BLOCK    8 CONNECTS TO BLOCKS   10
+ BLOCK   10 CONNECTS TO BLOCKS    3
+ BLOCK   11 CONNECTS TO BLOCKS   16
+ BLOCK   16 CONNECTS TO BLOCKS   17
+
+
+
+ THE LINES OF CODE CONTAINED IN EACH BLOCK ARE
+
+ BLOCK    1 CONTAINS LINES   10 TO   22    -   BLOCK    1
+ BLOCK    2 CONTAINS LINES   23 TO   24    -   BLOCK    2
+ BLOCK    3 CONTAINS LINES   25 TO   28    -   BLOCK    3
+ BLOCK    4 CONTAINS LINES   29 TO   37    -  BLOCKS    4 TO    5
+ BLOCK    6 CONTAINS LINES   38 TO   42    -  BLOCKS    6 TO    7
+ BLOCK    8 CONTAINS LINES   43 TO   47    -  BLOCKS    8 TO    9
+ BLOCK   10 CONTAINS LINES   48 TO   49    -   BLOCK   10
+ BLOCK   11 CONTAINS LINES   50 TO   66    -  BLOCKS   11 TO   15
+ BLOCK   16 CONTAINS LINES   67 TO   67    -   BLOCK   16
+ BLOCK   17 CONTAINS LINES   68 TO   68    -   BLOCK   17
+
+
+
+
+
+ ----- STRUCTURED CODE FOUND -----
+
+ SIMPLE COLLAPSE                         
+                      FORMED OF BLOCKS   11   16
+       THE FOLLOWING BLOCKS ARE MERGED   11   16
+
+ SIMPLE COLLAPSE                         
+                      FORMED OF BLOCKS    8   10
+       THE FOLLOWING BLOCKS ARE MERGED    8   10
+
+ SIMPLE COLLAPSE                         
+                      FORMED OF BLOCKS    6    8
+       THE FOLLOWING BLOCKS ARE MERGED    6    8
+
+ SIMPLE COLLAPSE                         
+                      FORMED OF BLOCKS    4    6
+       THE FOLLOWING BLOCKS ARE MERGED    4    6
+
+ WHILE                                   
+                      FORMED OF BLOCKS    3    4   11
+       THE FOLLOWING BLOCKS ARE MERGED    3    4
+
+ SIMPLE COLLAPSE                         
+                      FORMED OF BLOCKS    2    3
+       THE FOLLOWING BLOCKS ARE MERGED    2    3
+
+ SIMPLE COLLAPSE                         
+                      FORMED OF BLOCKS    2   11
+       THE FOLLOWING BLOCKS ARE MERGED    2   11
+
+ IF THEN                                 
+                      FORMED OF BLOCKS    1    2   17
+       THE FOLLOWING BLOCKS ARE MERGED    1    2
+
+
+
+
+
+ ----- CONNECTION DISPLAY -----
+
+ BLOCK    1 CONNECTS TO BLOCKS   17
+
+
+
+ THE LINES OF CODE CONTAINED IN EACH BLOCK ARE
+
+ BLOCK    1 CONTAINS LINES   10 TO   67    -  BLOCKS    1 TO   16
+ BLOCK   17 CONTAINS LINES   68 TO   68    -   BLOCK   17
+
+
+
+
+
+ ----- STRUCTURED CODE FOUND -----
+
+ SIMPLE COLLAPSE                         
+                      FORMED OF BLOCKS    1   17
+       THE FOLLOWING BLOCKS ARE MERGED    1   17
+
+
+
+
+
+ STRUCTURE REDUCED TO 1 BLOCK
+
+
+
+
+
+ ESSENTIAL KNOTS =     0
+ ***********************
+
+ ESSENTIAL COMPLEXITY OF MCCABE =    1
+ *************************************
+
+
+ PROCEDURE STRUCTURED
+ ********************
+
+
+
+
+
+
+ =====================================================================================================================
+                  EXECUTABLE     BASIC   AVERAGE   ORDER 1 MAX ORDER                               ESSENTIAL ESSENTIAL
+ PROCEDURE             LINES    BLOCKS    LENGTH INTERVALS INTERVALS REDUCIBLE    MCCABE     KNOTS    MCCABE     KNOTS
+ =====================================================================================================================
+
+ main                    53        17      3.12         5         2       YES         8         2         1         0
+
+ ---------------------------------------------------------------------------------------------------------------------
+
+ TOTAL FOR PROGRAM       53        17      3.12         5         2       YES         8         2         1         0
+
+
+
+
+
+ =========================================================
+                                           TOTAL MAX DEPTH
+ PROCEDURE           ENTRIES     EXITS     LOOPS     LOOPS
+ =========================================================
+
+ main                     1         1         2         1
+
+ ---------------------------------------------------------
+
+ TOTAL FOR PROGRAM        1         1         2         1
+
+
+
+
+
+ THE PROGRAM CONTAINS    1 PROCEDURES
+
+
+ THE ESSENTIAL MCCABE MEASURE OF 1 INDICATES THAT THE PROGRAM IS WELL STRUCTURED
